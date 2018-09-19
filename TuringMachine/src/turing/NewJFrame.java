@@ -25,6 +25,8 @@ public class NewJFrame extends javax.swing.JFrame {
     String [] alfabeto_fita;
     
     ArrayList<Funcao> funcoes = new ArrayList();
+    
+    ArrayList<Func> funcs = new ArrayList();
   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -55,11 +57,18 @@ public class NewJFrame extends javax.swing.JFrame {
         txtMostraAlfFita = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtMostraFuncao = new javax.swing.JTextArea();
+        txtEstAtual = new javax.swing.JTextField();
+        txtLeSimb = new javax.swing.JTextField();
+        txtProxEst = new javax.swing.JTextField();
+        txtEscSimb = new javax.swing.JTextField();
+        txtMovFita = new javax.swing.JTextField();
+        addFunc = new javax.swing.JButton();
+        jTextField6 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(200, 20));
         setMinimumSize(new java.awt.Dimension(500, 350));
-        setPreferredSize(new java.awt.Dimension(650, 250));
+        setPreferredSize(new java.awt.Dimension(670, 250));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -185,9 +194,37 @@ public class NewJFrame extends javax.swing.JFrame {
 
         txtMostraFuncao.setColumns(20);
         txtMostraFuncao.setRows(5);
+        txtMostraFuncao.setPreferredSize(new java.awt.Dimension(130, 120));
         jScrollPane1.setViewportView(txtMostraFuncao);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 60, 190, 110));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 60, 240, 150));
+        getContentPane().add(txtEstAtual, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 290, 40, -1));
+
+        txtLeSimb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLeSimbActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtLeSimb, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 290, 40, -1));
+        getContentPane().add(txtProxEst, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, 40, -1));
+        getContentPane().add(txtEscSimb, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 290, 40, -1));
+        getContentPane().add(txtMovFita, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 290, 40, -1));
+
+        addFunc.setText("add");
+        addFunc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addFuncActionPerformed(evt);
+            }
+        });
+        getContentPane().add(addFunc, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 290, -1, -1));
+
+        jTextField6.setText("E. Atual   Simb Lê   Vai p/      Simb Esc.");
+        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField6ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, 240, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -204,6 +241,8 @@ public class NewJFrame extends javax.swing.JFrame {
         
         funcoes.add(funcao);
         
+        txtMostraFuncao.selectAll();
+        txtMostraFuncao.replaceSelection("");
         for (Funcao f : funcoes){
             txtMostraFuncao.append(f.getFuncao());
             txtMostraFuncao.append(System.lineSeparator());
@@ -310,6 +349,34 @@ public class NewJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAlfabetoFitaActionPerformed
 
+    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField6ActionPerformed
+
+    private void txtLeSimbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLeSimbActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtLeSimbActionPerformed
+
+    private void addFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addFuncActionPerformed
+        String estAtual = txtEstAtual.getText();
+        String leSimb = txtLeSimb.getText();
+        String proxEst = txtProxEst.getText();
+        String escSimb = txtEscSimb.getText();
+        String movFita = txtMovFita.getText();
+        
+        Func func = new Func(estAtual, leSimb, proxEst, escSimb, movFita);
+        
+        funcs.add(func);
+        
+        txtMostraFuncao.selectAll();
+        txtMostraFuncao.replaceSelection("");
+        for (Func f : funcs){
+          //  txtMostraFuncao.append(f.getFunc());
+            txtMostraFuncao.append(System.lineSeparator());
+        }
+        
+    }//GEN-LAST:event_addFuncActionPerformed
+
     public static void main(String args[]) {
         
         
@@ -340,6 +407,7 @@ public class NewJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addFunc;
     private javax.swing.JButton btnAdicionaFuncao;
     private javax.swing.JButton btnAdicionarEstFinal;
     private javax.swing.JButton btnMostraAjuda;
@@ -355,15 +423,21 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField txtAlfabeto;
     private javax.swing.JTextField txtAlfabetoFita;
+    private javax.swing.JTextField txtEscSimb;
+    private javax.swing.JTextField txtEstAtual;
     private javax.swing.JTextField txtEstados;
     private javax.swing.JTextField txtEstadosFinais;
     private javax.swing.JTextField txtFuncao;
+    private javax.swing.JTextField txtLeSimb;
     private javax.swing.JTextField txtMostraAlfFita;
     private javax.swing.JTextField txtMostraAlfabeto;
     private javax.swing.JTextField txtMostraFinais;
     private javax.swing.JTextArea txtMostraFuncao;
+    private javax.swing.JTextField txtMovFita;
+    private javax.swing.JTextField txtProxEst;
     private javax.swing.JTextField txtconjuntoEstados;
     // End of variables declaration//GEN-END:variables
 }
