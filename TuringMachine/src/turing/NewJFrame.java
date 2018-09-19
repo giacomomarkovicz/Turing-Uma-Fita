@@ -24,7 +24,7 @@ public class NewJFrame extends javax.swing.JFrame {
     String string_alfabeto_fita;
     String [] alfabeto_fita;
     
-    ArrayList<String> funcao = new ArrayList();
+    ArrayList<Funcao> funcoes = new ArrayList();
   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -53,11 +53,13 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         txtAlfabetoFita = new javax.swing.JTextField();
         txtMostraAlfFita = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtMostraFuncao = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(200, 20));
         setMinimumSize(new java.awt.Dimension(500, 350));
-        setPreferredSize(new java.awt.Dimension(567, 229));
+        setPreferredSize(new java.awt.Dimension(650, 250));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -146,7 +148,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 txtEstadosActionPerformed(evt);
             }
         });
-        getContentPane().add(txtEstados, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 130, -1));
+        getContentPane().add(txtEstados, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, 130, -1));
 
         btnAdicionarEstFinal.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnAdicionarEstFinal.setText("Adicionar Dados");
@@ -156,8 +158,8 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAdicionarEstFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 140, 30));
-        getContentPane().add(txtMostraAlfabeto, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, 130, -1));
-        getContentPane().add(txtMostraFinais, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 150, 130, -1));
+        getContentPane().add(txtMostraAlfabeto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 130, -1));
+        getContentPane().add(txtMostraFinais, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 130, -1));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel9.setText("Alfabeto da Fita");
@@ -179,7 +181,13 @@ public class NewJFrame extends javax.swing.JFrame {
                 txtMostraAlfFitaActionPerformed(evt);
             }
         });
-        getContentPane().add(txtMostraAlfFita, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, 130, -1));
+        getContentPane().add(txtMostraAlfFita, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 130, -1));
+
+        txtMostraFuncao.setColumns(20);
+        txtMostraFuncao.setRows(5);
+        jScrollPane1.setViewportView(txtMostraFuncao);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 60, 190, 110));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -190,12 +198,16 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void btnAdicionaFuncaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionaFuncaoActionPerformed
         
-        funcao.add(txtFuncao.getText());
-        int i;
+        String fun = txtFuncao.getText();            
         
-        for (i=0; i<funcao.size(); i++) {
-        txtMostraFuncao.setText(funcao.get(i));
-    }
+        Funcao funcao = new Funcao(fun);
+        
+        funcoes.add(funcao);
+        
+        for (Funcao f : funcoes){
+            txtMostraFuncao.append(f.getFuncao());
+            txtMostraFuncao.append(System.lineSeparator());
+        }
         
     }//GEN-LAST:event_btnAdicionaFuncaoActionPerformed
 
@@ -342,6 +354,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField txtAlfabeto;
     private javax.swing.JTextField txtAlfabetoFita;
     private javax.swing.JTextField txtEstados;
@@ -350,6 +363,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField txtMostraAlfFita;
     private javax.swing.JTextField txtMostraAlfabeto;
     private javax.swing.JTextField txtMostraFinais;
+    private javax.swing.JTextArea txtMostraFuncao;
     private javax.swing.JTextField txtconjuntoEstados;
     // End of variables declaration//GEN-END:variables
 }
