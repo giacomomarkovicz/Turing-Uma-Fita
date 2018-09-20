@@ -11,7 +11,6 @@ public class Main extends javax.swing.JFrame {
         initComponents();
     }
     
-    //ArrayList<String> estados = new ArrayList();
     String string_estados;
     String [] estados;
     
@@ -64,6 +63,12 @@ public class Main extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         txtFitaSaida = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(200, 20));
@@ -130,7 +135,7 @@ public class Main extends javax.swing.JFrame {
                 btnMostraAjudaActionPerformed(evt);
             }
         });
-        getContentPane().add(btnMostraAjuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 230, 60, -1));
+        getContentPane().add(btnMostraAjuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 230, 60, -1));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel10.setText("Máquina de Turing");
@@ -188,17 +193,29 @@ public class Main extends javax.swing.JFrame {
                 txtEstAtualActionPerformed(evt);
             }
         });
-        getContentPane().add(txtEstAtual, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 40, -1));
+        getContentPane().add(txtEstAtual, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 30, -1));
 
         txtLeSimb.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtLeSimbActionPerformed(evt);
             }
         });
-        getContentPane().add(txtLeSimb, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 40, -1));
-        getContentPane().add(txtProxEst, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, 40, -1));
-        getContentPane().add(txtEscSimb, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 230, 40, -1));
-        getContentPane().add(txtMovFita, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, 40, -1));
+        getContentPane().add(txtLeSimb, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, 30, -1));
+
+        txtProxEst.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtProxEstActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtProxEst, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 230, 30, -1));
+
+        txtEscSimb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEscSimbActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtEscSimb, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, 30, -1));
+        getContentPane().add(txtMovFita, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 230, 30, -1));
 
         addFunc.setText("Adicionar");
         addFunc.addActionListener(new java.awt.event.ActionListener() {
@@ -206,7 +223,7 @@ public class Main extends javax.swing.JFrame {
                 addFuncActionPerformed(evt);
             }
         });
-        getContentPane().add(addFunc, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 230, -1, -1));
+        getContentPane().add(addFunc, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 230, -1, -1));
 
         txtFitaEntrada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -232,6 +249,30 @@ public class Main extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 280, 210, 90));
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel14.setText("(");
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 20, 20));
+
+        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel15.setText(",");
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 20, 20));
+
+        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel16.setText(") = (");
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, 50, 20));
+
+        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel19.setText(",");
+        getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 20, 20));
+
+        jLabel20.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel20.setText(",");
+        getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, 20, 20));
+
+        jLabel21.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel21.setText(")");
+        getContentPane().add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 230, 20, 20));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -371,6 +412,14 @@ public class Main extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void txtEscSimbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEscSimbActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEscSimbActionPerformed
+
+    private void txtProxEstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProxEstActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtProxEstActionPerformed
+
     public static void main(String args[]) {
         
         
@@ -411,7 +460,13 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
