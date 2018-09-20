@@ -1,5 +1,5 @@
 
-package turing;
+package maquina;
 
 
 public class Func {
@@ -60,8 +60,8 @@ public class Func {
         this.movFita = movFita;
     }
     
-//    public String getFuncao() {
-//        //return funcao;
-//    }
+    public String getFuncao() {
+        return "(" + estAtual + "," + leSimb + ") = (" + proxEst + "," + escSimb+ "," + movFita +")";
+    }
     
 }

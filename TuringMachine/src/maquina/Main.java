@@ -1,13 +1,13 @@
 
-package turing;
+package maquina;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import java.util.Arrays;
 
-public class NewJFrame extends javax.swing.JFrame {
+public class Main extends javax.swing.JFrame {
 
-    public NewJFrame() {
+    public Main() {
         initComponents();
     }
     
@@ -22,9 +22,7 @@ public class NewJFrame extends javax.swing.JFrame {
     String [] alfabeto;
     
     String string_alfabeto_fita;
-    String [] alfabeto_fita;
-    
-    ArrayList<Funcao> funcoes = new ArrayList();
+    String [] alfabeto_fita;   
     
     ArrayList<Func> funcs = new ArrayList();
   
@@ -42,9 +40,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        txtFuncao = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        btnAdicionaFuncao = new javax.swing.JButton();
         btnMostraAjuda = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         txtEstados = new javax.swing.JTextField();
@@ -63,12 +59,15 @@ public class NewJFrame extends javax.swing.JFrame {
         txtEscSimb = new javax.swing.JTextField();
         txtMovFita = new javax.swing.JTextField();
         addFunc = new javax.swing.JButton();
-        jTextField6 = new javax.swing.JTextField();
+        txtFitaEntrada = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        txtFitaSaida = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(200, 20));
         setMinimumSize(new java.awt.Dimension(500, 350));
-        setPreferredSize(new java.awt.Dimension(670, 250));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -116,24 +115,9 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel7.setText("Funções de Transição");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 120, 20));
 
-        txtFuncao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFuncaoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtFuncao, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 170, -1));
-
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel8.setText("δ ");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 20, 20));
-
-        btnAdicionaFuncao.setText("Adicionar");
-        btnAdicionaFuncao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAdicionaFuncaoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnAdicionaFuncao, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, -1, -1));
 
         btnMostraAjuda.setText("Ajuda");
         btnMostraAjuda.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -146,7 +130,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 btnMostraAjudaActionPerformed(evt);
             }
         });
-        getContentPane().add(btnMostraAjuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 230, 60, -1));
+        getContentPane().add(btnMostraAjuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 230, 60, -1));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel10.setText("Máquina de Turing");
@@ -198,33 +182,56 @@ public class NewJFrame extends javax.swing.JFrame {
         jScrollPane1.setViewportView(txtMostraFuncao);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 60, 240, 150));
-        getContentPane().add(txtEstAtual, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 290, 40, -1));
+
+        txtEstAtual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEstAtualActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtEstAtual, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 40, -1));
 
         txtLeSimb.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtLeSimbActionPerformed(evt);
             }
         });
-        getContentPane().add(txtLeSimb, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 290, 40, -1));
-        getContentPane().add(txtProxEst, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, 40, -1));
-        getContentPane().add(txtEscSimb, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 290, 40, -1));
-        getContentPane().add(txtMovFita, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 290, 40, -1));
+        getContentPane().add(txtLeSimb, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 40, -1));
+        getContentPane().add(txtProxEst, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, 40, -1));
+        getContentPane().add(txtEscSimb, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 230, 40, -1));
+        getContentPane().add(txtMovFita, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, 40, -1));
 
-        addFunc.setText("add");
+        addFunc.setText("Adicionar");
         addFunc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addFuncActionPerformed(evt);
             }
         });
-        getContentPane().add(addFunc, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 290, -1, -1));
+        getContentPane().add(addFunc, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 230, -1, -1));
 
-        jTextField6.setText("E. Atual   Simb Lê   Vai p/      Simb Esc.");
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+        txtFitaEntrada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+                txtFitaEntradaActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, 240, -1));
+        getContentPane().add(txtFitaEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 290, 300, -1));
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel12.setText("Fita de Entrada");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel13.setText("Fita de Saída");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, -1, -1));
+        getContentPane().add(txtFitaSaida, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 330, 300, -1));
+
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jButton1.setText("Testar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 280, 210, 90));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -232,23 +239,6 @@ public class NewJFrame extends javax.swing.JFrame {
     private void txtconjuntoEstadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtconjuntoEstadosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtconjuntoEstadosActionPerformed
-
-    private void btnAdicionaFuncaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionaFuncaoActionPerformed
-        
-        String fun = txtFuncao.getText();            
-        
-        Funcao funcao = new Funcao(fun);
-        
-        funcoes.add(funcao);
-        
-        txtMostraFuncao.selectAll();
-        txtMostraFuncao.replaceSelection("");
-        for (Funcao f : funcoes){
-            txtMostraFuncao.append(f.getFuncao());
-            txtMostraFuncao.append(System.lineSeparator());
-        }
-        
-    }//GEN-LAST:event_btnAdicionaFuncaoActionPerformed
 
     private void btnMostraAjudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostraAjudaActionPerformed
         // TODO add your handling code here:
@@ -341,17 +331,9 @@ public class NewJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMostraAlfFitaActionPerformed
 
-    private void txtFuncaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFuncaoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFuncaoActionPerformed
-
     private void txtAlfabetoFitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAlfabetoFitaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAlfabetoFitaActionPerformed
-
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
 
     private void txtLeSimbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLeSimbActionPerformed
         // TODO add your handling code here:
@@ -371,11 +353,23 @@ public class NewJFrame extends javax.swing.JFrame {
         txtMostraFuncao.selectAll();
         txtMostraFuncao.replaceSelection("");
         for (Func f : funcs){
-          //  txtMostraFuncao.append(f.getFunc());
+            txtMostraFuncao.append(f.getFuncao());
             txtMostraFuncao.append(System.lineSeparator());
         }
         
     }//GEN-LAST:event_addFuncActionPerformed
+
+    private void txtEstAtualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEstAtualActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEstAtualActionPerformed
+
+    private void txtFitaEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFitaEntradaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFitaEntradaActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public static void main(String args[]) {
         
@@ -388,32 +382,35 @@ public class NewJFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NewJFrame().setVisible(true);
+                new Main().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addFunc;
-    private javax.swing.JButton btnAdicionaFuncao;
     private javax.swing.JButton btnAdicionarEstFinal;
     private javax.swing.JButton btnMostraAjuda;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -423,14 +420,14 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField txtAlfabeto;
     private javax.swing.JTextField txtAlfabetoFita;
     private javax.swing.JTextField txtEscSimb;
     private javax.swing.JTextField txtEstAtual;
     private javax.swing.JTextField txtEstados;
     private javax.swing.JTextField txtEstadosFinais;
-    private javax.swing.JTextField txtFuncao;
+    private javax.swing.JTextField txtFitaEntrada;
+    private javax.swing.JTextField txtFitaSaida;
     private javax.swing.JTextField txtLeSimb;
     private javax.swing.JTextField txtMostraAlfFita;
     private javax.swing.JTextField txtMostraAlfabeto;
