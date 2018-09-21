@@ -21,7 +21,11 @@ public class Main extends javax.swing.JFrame {
     String [] alfabeto;
     
     String string_alfabeto_fita;
-    String [] alfabeto_fita;   
+    String [] alfabeto_fita; 
+    
+    char[] fita_saida = null;
+    char[] fita_entrada = null;
+    String string_fita_entrada;
     
     ArrayList<Func> funcs = new ArrayList();
   
@@ -409,6 +413,40 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_txtFitaEntradaActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        string_fita_entrada = txtFitaEntrada.getText();
+        
+        fita_entrada = string_fita_entrada.toCharArray();
+        
+        //String text = String.valueOf(fita_entrada);
+
+        //txtFitaSaida.setText(text);
+        
+//        String estado_atual = estados[0];
+//        for (Func f : funcs){
+//           if(estado_atual.equals(f.getEstAtual())){
+//               //txtFitaSaida.setText("UHUL");
+//               for (int k = 0; k <= alfabeto_fita.length; k++) {
+//                        if(alfabeto_fita[k].equals(f.getLeSimb())){
+//                            estado_atual = f.getProxEst();
+//                        }
+//                    }
+//           } 
+//        }
+        
+        
+//        for (int j = 0; j <= estados.length; j++) {
+//            
+//            for (Func f : funcs) {
+//                if (estados[j].equals(f.getEstAtual())) {
+//                    //txtFitaSaida.setText("UHUL");
+//                    for (int k = 0; k <= alfabeto_fita.length; k++) {
+//                        if(alfabeto_fita[k].equals(f.getLeSimb())){
+//                            estado_atual = f.getProxEst();
+//                        }
+//                    }
+//                }
+//            }
+//        }
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
