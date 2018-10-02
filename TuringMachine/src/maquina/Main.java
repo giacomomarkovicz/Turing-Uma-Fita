@@ -25,7 +25,7 @@ public class Main extends javax.swing.JFrame {
     String string_alfabeto_fita;
     String [] alfabeto_fita; 
     
-    char[] fita_saida = null;
+    String fita_saida;
     char[] fita_entrada = null;
     String string_fita_entrada;
     
@@ -463,23 +463,25 @@ public class Main extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String estadoatual;
-        char charatual;
-        Boolean finalizamaquina = false;
         int k = 0;
-        charatual = fita_entrada[k];
+        Boolean finalizamaquina = false;
         
         string_fita_entrada = txtFitaEntrada.getText();
         
-        fita_entrada = string_fita_entrada.toCharArray();
+        //fita_entrada = string_fita_entrada.toCharArray();
+        
+        char charatual = string_fita_entrada.charAt(k);
         
         estadoatual = estado_inicial;
-        
+             
+
         while (finalizamaquina == false) {
             for (Func f : funcs ){
                 if(estadoatual.equals(f.getEstAtual())){
-                   if(String.valueOf(charatual) == f.getLeSimb()){
-                       fita_saida[k]=f.getEscSimb().charAt(0);
-
+                   if(String.valueOf(charatual).equals(f.getLeSimb())){
+                       fita_saida=f.getEscSimb();
+                       txtFitaSaida.setText(fita_saida);
+                       finalizamaquina = true;
                    }
                 }
             }
