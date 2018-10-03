@@ -8,6 +8,7 @@ public class Func {
     private String proxEst;
     private String escSimb;
     private String movFita;
+    private String estFinal;
 
     public Func(){    
     }

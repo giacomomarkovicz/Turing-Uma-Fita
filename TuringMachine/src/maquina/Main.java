@@ -25,7 +25,7 @@ public class Main extends javax.swing.JFrame {
     String string_alfabeto_fita;
     String [] alfabeto_fita; 
     
-    String fita_saida;
+    String fita_saida = "";
     char[] fita_entrada = null;
     String string_fita_entrada;
     
@@ -477,15 +477,31 @@ public class Main extends javax.swing.JFrame {
 
         while (finalizamaquina == false) {
             for (Func f : funcs ){
-                if(estadoatual.equals(f.getEstAtual())){
-                   if(String.valueOf(charatual).equals(f.getLeSimb())){
-                       fita_saida=f.getEscSimb();
-                       txtFitaSaida.setText(fita_saida);
-                       finalizamaquina = true;
-                   }
+                if(estadoatual.equals(f.getEstAtual())){ //compara estados
+                    if(String.valueOf(charatual).equals(f.getLeSimb())){ //compara caracter atual da fita com os caracteres das funções de transição
+                        fita_saida=fita_saida + f.getEscSimb();
+
+                        estadoatual=f.getProxEst();
+                        if("R".equals(f.getMovFita())){ //se fita for pra direita
+                           k++;
+                        } else if("L".equals(f.getMovFita())){ //se fita for pra esquerda
+                           k--;
+                        }
+                    }
+                    for(int j = 0;j<=estadosfinais.length;j++){
+                        if(estadoatual.equals(estadosfinais[j])){
+                            txtFitaSaida.setText(fita_saida);
+                            finalizamaquina = true;                          
+                        }
+                    }
                 }
             }
         }
+        
+//        else{
+//                       fita_saida = fita_saida + f.getEscSimb();
+//                       txtFitaSaida.setText(fita_saida);
+//                   }
         
         //String text = String.valueOf(fita_entrada);
 
