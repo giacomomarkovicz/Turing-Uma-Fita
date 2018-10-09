@@ -45,6 +45,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="txtconjuntoEstados">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="q1;q2;q3;q4"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtconjuntoEstadosActionPerformed"/>
         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtconjuntoEstadosKeyPressed"/>
@@ -70,6 +73,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="txtAlfabeto">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="a;b;c"/>
+      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="170" y="90" width="90" height="-1"/>
@@ -90,6 +96,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="txtEstadosFinais">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="q4"/>
+      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="170" y="150" width="90" height="-1"/>
@@ -316,6 +325,9 @@
       </SubComponents>
     </Container>
     <Component class="javax.swing.JTextField" name="txtEstAtual">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="q1"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEstAtualActionPerformed"/>
       </Events>
@@ -326,6 +338,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="txtLeSimb">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="a"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtLeSimbActionPerformed"/>
       </Events>
@@ -336,6 +351,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="txtProxEst">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="q2"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtProxEstActionPerformed"/>
       </Events>
@@ -346,6 +364,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="txtEscSimb">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="b"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEscSimbActionPerformed"/>
       </Events>
@@ -356,6 +377,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="txtMovFita">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="R"/>
+      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="410" y="260" width="30" height="-1"/>
@@ -539,6 +563,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="txtEstadoIn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="q1"/>
+      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="170" y="180" width="90" height="-1"/>

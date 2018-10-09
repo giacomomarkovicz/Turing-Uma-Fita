@@ -11,6 +11,7 @@ public class Main extends javax.swing.JFrame {
         initComponents();
     }
     
+    String resultado="";
     String string_estados;
     String [] estados;
     
@@ -89,6 +90,7 @@ public class Main extends javax.swing.JFrame {
         jLabel1.setText("Conjunto de Estados ");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 130, 20));
 
+        txtconjuntoEstados.setText("q1;q2;q3;q4");
         txtconjuntoEstados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtconjuntoEstadosActionPerformed(evt);
@@ -107,11 +109,15 @@ public class Main extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Alfabeto de Entrada");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 130, 20));
+
+        txtAlfabeto.setText("a;b;c");
         getContentPane().add(txtAlfabeto, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 90, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("Estados Finais");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 130, 20));
+
+        txtEstadosFinais.setText("q4");
         getContentPane().add(txtEstadosFinais, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 90, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -210,6 +216,7 @@ public class Main extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 60, 240, 150));
 
+        txtEstAtual.setText("q1");
         txtEstAtual.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEstAtualActionPerformed(evt);
@@ -217,6 +224,7 @@ public class Main extends javax.swing.JFrame {
         });
         getContentPane().add(txtEstAtual, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, 30, -1));
 
+        txtLeSimb.setText("a");
         txtLeSimb.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtLeSimbActionPerformed(evt);
@@ -224,6 +232,7 @@ public class Main extends javax.swing.JFrame {
         });
         getContentPane().add(txtLeSimb, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, 30, -1));
 
+        txtProxEst.setText("q2");
         txtProxEst.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtProxEstActionPerformed(evt);
@@ -231,12 +240,15 @@ public class Main extends javax.swing.JFrame {
         });
         getContentPane().add(txtProxEst, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, 30, -1));
 
+        txtEscSimb.setText("b");
         txtEscSimb.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEscSimbActionPerformed(evt);
             }
         });
         getContentPane().add(txtEscSimb, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, 30, -1));
+
+        txtMovFita.setText("R");
         getContentPane().add(txtMovFita, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 260, 30, -1));
 
         addFunc.setText("Adicionar");
@@ -303,6 +315,8 @@ public class Main extends javax.swing.JFrame {
         jLabel18.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel18.setText("Q0");
         getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 30, 20));
+
+        txtEstadoIn.setText("q1");
         getContentPane().add(txtEstadoIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 90, -1));
 
         txtMostraEstadoIn.setEditable(false);
@@ -477,23 +491,42 @@ public class Main extends javax.swing.JFrame {
 
         while (finalizamaquina == false) {
             for (Func f : funcs ){
+                
+                 JOptionPane.showMessageDialog(null, "estado atual" + estadoatual+"\n"+ "estados f.getestAtual:" + f.getEstAtual());
+                      
                 if(estadoatual.equals(f.getEstAtual())){ //compara estados
+                    
+                    
+                 JOptionPane.showMessageDialog(null, "char atual" + String.valueOf(charatual)+"\n"+ "estados f.getlesymbol:" + f.getLeSimb());
+                
                     if(String.valueOf(charatual).equals(f.getLeSimb())){ //compara caracter atual da fita com os caracteres das funções de transição
                         fita_saida=fita_saida + f.getEscSimb();
 
                         estadoatual=f.getProxEst();
+                        
                         if("R".equals(f.getMovFita())){ //se fita for pra direita
                            k++;
+                           charatual = string_fita_entrada.charAt(k);
                         } else if("L".equals(f.getMovFita())){ //se fita for pra esquerda
                            k--;
+                           charatual = string_fita_entrada.charAt(k);
                         }
                     }
-                    for(int j = 0;j<=estadosfinais.length;j++){
+                    for(int j=0;j<estadosfinais.length;j++){
+                        
+                        JOptionPane.showMessageDialog(null, "estado atual" + estadoatual+"\n"+ "estados finais:" + estadosfinais[j]);
                         if(estadoatual.equals(estadosfinais[j])){
-                            txtFitaSaida.setText(fita_saida);
-                            finalizamaquina = true;                          
+                            
+                            resultado=""+fita_saida;
+                                        
+                        }else{
+                            
+                            resultado="Inválida";
+                           
                         }
                     }
+                     txtFitaSaida.setText(resultado);
+                     finalizamaquina = true; 
                 }
             }
         }
