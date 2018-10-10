@@ -502,7 +502,7 @@ public class Main extends javax.swing.JFrame {
                     if(String.valueOf(charatual).equals(f.getLeSimb())){ //compara caracter atual da fita com os caracteres das funções de transição
                         fita_saida=fita_saida + f.getEscSimb();
 
-                        estadoatual=f.getProxEst();
+                        
                         
                         if("R".equals(f.getMovFita())){ //se fita for pra direita
                            k++;
@@ -518,14 +518,29 @@ public class Main extends javax.swing.JFrame {
                         if(estadoatual.equals(estadosfinais[j])){
                             
                             resultado=""+fita_saida;
-                                        
-                        }else{
-                            
-                            resultado="Inválida";
-                           
-                        }
+                            break;            
+                        
                     }
-                     txtFitaSaida.setText(resultado);
+                        else{
+                        estadoatual=f.getProxEst();
+                        }
+                        
+                        if(estadoatual.equals(estados[(estados.length)-1])){
+                             resultado="";
+                             break;
+                        }
+                        
+                        }
+                            if (resultado.equals("")){
+                                
+                            resultado="Inválida";
+                            }
+                            else{
+                                txtFitaSaida.setText(resultado);
+                        }
+                     
+                     
+                     
                      finalizamaquina = true; 
                 }
             }
