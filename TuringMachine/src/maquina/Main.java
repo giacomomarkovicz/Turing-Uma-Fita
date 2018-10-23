@@ -502,46 +502,67 @@ public class Main extends javax.swing.JFrame {
                     if(String.valueOf(charatual).equals(f.getLeSimb())){ //compara caracter atual da fita com os caracteres das funções de transição
                         fita_saida=fita_saida + f.getEscSimb();
 
+                        for(int j=0;j<estadosfinais.length;j++){
                         
+                        JOptionPane.showMessageDialog(null, "estado atual" + estadoatual+"\n"+ "estados finais:" + estadosfinais[j]);
+                        if(f.getProxEst().equals(estadosfinais[j])){
+                            
+                            txtFitaSaida.setText(fita_saida);
+                            finalizamaquina = true;
+                            break;            
+                            
+                        }else{
+                            estadoatual=f.getProxEst();
+                        }
+                        
+//                        if(estadoatual.equals(estados[(estados.length)-1])){
+//                             resultado="";
+//                             break;
+//                        }
+                        
+                        }
                         
                         if("R".equals(f.getMovFita())){ //se fita for pra direita
                            k++;
-                           charatual = string_fita_entrada.charAt(k);
+                           //charatual = string_fita_entrada.charAt(k);
                         } else if("L".equals(f.getMovFita())){ //se fita for pra esquerda
                            k--;
-                           charatual = string_fita_entrada.charAt(k);
-                        }
+                           //charatual = string_fita_entrada.charAt(k);
+                        }// else if("S".equals(f.getMovFita())){ 
+                           //charatual = string_fita_entrada.charAt(k);
+                        //}
+                        charatual = string_fita_entrada.charAt(k);
                     }
-                    for(int j=0;j<estadosfinais.length;j++){
-                        
-                        JOptionPane.showMessageDialog(null, "estado atual" + estadoatual+"\n"+ "estados finais:" + estadosfinais[j]);
-                        if(estadoatual.equals(estadosfinais[j])){
-                            
-                            resultado=""+fita_saida;
-                            break;            
-                        
-                    }
-                        else{
-                        estadoatual=f.getProxEst();
-                        }
-                        
-                        if(estadoatual.equals(estados[(estados.length)-1])){
-                             resultado="";
-                             break;
-                        }
-                        
-                        }
-                            if (resultado.equals("")){
-                                
-                            resultado="Inválida";
-                            }
-                            else{
-                                txtFitaSaida.setText(resultado);
-                        }
+//                    for(int j=0;j<estadosfinais.length;j++){
+//                        
+//                        JOptionPane.showMessageDialog(null, "estado atual" + estadoatual+"\n"+ "estados finais:" + estadosfinais[j]);
+//                        if(estadoatual.equals(estadosfinais[j])){
+//                            
+//                            txtFitaSaida.setText(fita_saida);
+//                            finalizamaquina = true;
+//                            //break;            
+//                            
+//                        }else{
+//                            estadoatual=f.getProxEst();
+//                        }
+//                        
+////                        if(estadoatual.equals(estados[(estados.length)-1])){
+////                             resultado="";
+////                             break;
+////                        }
+//                        
+//                        }
+//                            if (resultado.equals("")){
+//                                
+//                            resultado="Inválida";
+//                            }
+//                            else{
+//                                txtFitaSaida.setText(fita_saida);
+//                        }
                      
                      
                      
-                     finalizamaquina = true; 
+                     //finalizamaquina = true; 
                 }
             }
         }
