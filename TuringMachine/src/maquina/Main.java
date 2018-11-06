@@ -1,4 +1,3 @@
-
 package maquina;
 
 import java.util.ArrayList;
@@ -10,28 +9,28 @@ public class Main extends javax.swing.JFrame {
     public Main() {
         initComponents();
     }
-    
-    String resultado="";
+
+    String resultado = "";
     String string_estados;
-    String [] estados;
-    
+    String[] estados;
+
     String string_estados_finais;
-    String [] estadosfinais;
-    
+    String[] estadosfinais;
+
     String estado_inicial;
-    
+
     String string_alfabeto;
-    String [] alfabeto;
-    
+    String[] alfabeto;
+
     String string_alfabeto_fita;
-    String [] alfabeto_fita; 
-    
+    String[] alfabeto_fita;
+
     String fita_saida = "";
     char[] fita_entrada = null;
     String string_fita_entrada;
-    
+
     ArrayList<Func> funcs = new ArrayList();
-  
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -337,15 +336,15 @@ public class Main extends javax.swing.JFrame {
 
     private void btnMostraAjudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostraAjudaActionPerformed
         // TODO add your handling code here:
-        
+
         JOptionPane.showMessageDialog(null, "Exemplo: (q0,1)=(q1,0,R), sendo que,"
-                                          + "\n q0: estado que está,"
-                                          + " \n 1: o que irá ler,"
-                                          + " \n q1: estado que irá,"
-                                          + " \n 0: irá escrever na fita,"
-                                          + " \n R: cabeça de leitura irá para (R direita, L esquerda.");
-        
-        
+                + "\n q0: estado que está,"
+                + " \n 1: o que irá ler,"
+                + " \n q1: estado que irá,"
+                + " \n 0: irá escrever na fita,"
+                + " \n R: cabeça de leitura irá para (R direita, L esquerda.");
+
+
     }//GEN-LAST:event_btnMostraAjudaActionPerformed
 
     private void txtconjuntoEstadosKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtconjuntoEstadosKeyPressed
@@ -354,8 +353,8 @@ public class Main extends javax.swing.JFrame {
 
     private void txtconjuntoEstadosKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtconjuntoEstadosKeyReleased
         // TODO add your handling code here:
-        
-        
+
+
     }//GEN-LAST:event_txtconjuntoEstadosKeyReleased
 
     private void btnMostraAjudaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMostraAjudaMouseEntered
@@ -378,11 +377,9 @@ public class Main extends javax.swing.JFrame {
         finaisformatado = finaisformatado.replace("]", ")");
 
         txtMostraFinais.setText(finaisformatado);
-        
+
         txtEstadosFinais.setText("");
 
-        
-        
         //ESTADOS
         string_estados = txtconjuntoEstados.getText();
         estados = string_estados.split(";");
@@ -394,9 +391,9 @@ public class Main extends javax.swing.JFrame {
         estadoformatado = estadoformatado.replace("]", ")");
 
         txtEstados.setText(estadoformatado);
-        
+
         txtconjuntoEstados.setText("");
-        
+
         //ALFABETO
         string_alfabeto = txtAlfabeto.getText();
         alfabeto = string_alfabeto.split(";");
@@ -408,9 +405,9 @@ public class Main extends javax.swing.JFrame {
         alfabetoformatado = alfabetoformatado.replace("]", ")");
 
         txtMostraAlfabeto.setText(alfabetoformatado);
-        
+
         txtAlfabeto.setText("");
-        
+
         //ALFABETO FITA
         string_alfabeto_fita = txtAlfabetoFita.getText();
         alfabeto_fita = string_alfabeto_fita.split(";");
@@ -422,17 +419,16 @@ public class Main extends javax.swing.JFrame {
         alfabetofitaformatado = alfabetofitaformatado.replace("]", ")");
 
         txtMostraAlfFita.setText(alfabetofitaformatado);
-        
+
         txtAlfabetoFita.setText("");
-        
+
         //ESTADO INICIAL
-        
         estado_inicial = txtEstadoIn.getText();
-        
+
         txtMostraEstadoIn.setText("(" + estado_inicial + ")");
-        
+
         txtEstadoIn.setText("");
-        
+
     }//GEN-LAST:event_btnAdicionarEstFinalActionPerformed
 
     private void txtMostraAlfFitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMostraAlfFitaActionPerformed
@@ -453,18 +449,18 @@ public class Main extends javax.swing.JFrame {
         String proxEst = txtProxEst.getText();
         String escSimb = txtEscSimb.getText();
         String movFita = txtMovFita.getText();
-        
+
         Func func = new Func(estAtual, leSimb, proxEst, escSimb, movFita);
-        
+
         funcs.add(func);
-        
+
         txtMostraFuncao.selectAll();
         txtMostraFuncao.replaceSelection("");
-        for (Func f : funcs){
+        for (Func f : funcs) {
             txtMostraFuncao.append(f.getFuncao());
             txtMostraFuncao.append(System.lineSeparator());
         }
-        
+
     }//GEN-LAST:event_addFuncActionPerformed
 
     private void txtEstAtualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEstAtualActionPerformed
@@ -479,130 +475,66 @@ public class Main extends javax.swing.JFrame {
         String estadoatual;
         int k = 0;
         Boolean finalizamaquina = false;
-        
+
         string_fita_entrada = txtFitaEntrada.getText();
-        
+
         //fita_entrada = string_fita_entrada.toCharArray();
-        
         char charatual = string_fita_entrada.charAt(k);
-        
+
         estadoatual = estado_inicial;
-             
 
         while (finalizamaquina == false) {
-            for (Func f : funcs ){
-                
-                 JOptionPane.showMessageDialog(null, "estado atual" + estadoatual+"\n"+ "estados f.getestAtual:" + f.getEstAtual());
-                      
-                if(estadoatual.equals(f.getEstAtual())){ //compara estados
-                    
-                    
-                 JOptionPane.showMessageDialog(null, "char atual" + String.valueOf(charatual)+"\n"+ "estados f.getlesymbol:" + f.getLeSimb());
-                
-                    if(String.valueOf(charatual).equals(f.getLeSimb())){ //compara caracter atual da fita com os caracteres das funções de transição
-                        fita_saida=fita_saida + f.getEscSimb();
+            for (Func f : funcs) {
 
-                        for(int j=0;j<estadosfinais.length;j++){
-                        
-                        JOptionPane.showMessageDialog(null, "estado atual" + estadoatual+"\n"+ "estados finais:" + estadosfinais[j]);
-                        if(f.getProxEst().equals(estadosfinais[j])){
-                            
-                            txtFitaSaida.setText(fita_saida);
-                            finalizamaquina = true;
-                            break;            
-                            
-                        }else{
-                            estadoatual=f.getProxEst();
+                JOptionPane.showMessageDialog(null, "estado atual" + estadoatual + "\n" + "estados f.getestAtual:" + f.getEstAtual());
+
+                if (estadoatual.equals(f.getEstAtual())) { //compara estados
+
+                    //COMPARA CARACTERE DA FITA COM ALFABETO
+//                    for (int i = 0; i < string_fita_entrada.length(); i++) {
+//                        for (int j = 0; j < alfabeto.length; j++) {
+//                            if (!String.valueOf(string_fita_entrada.charAt(i)).equals(alfabeto[j])) {
+//                                txtFitaSaida.setText("Caractere fora do alfabeto informado.");
+//                                finalizamaquina = true;
+//                                break;
+//                            }                     
+//                        }                  
+//                    }
+
+                    JOptionPane.showMessageDialog(null, "char atual" + String.valueOf(charatual) + "\n" + "estados f.getlesymbol:" + f.getLeSimb());
+
+                    if (String.valueOf(charatual).equals(f.getLeSimb())) { //compara caracter atual da fita com os caracteres das funções de transição
+                        fita_saida = fita_saida + f.getEscSimb();
+
+                        for (int j = 0; j < estadosfinais.length; j++) {
+
+                            JOptionPane.showMessageDialog(null, "estado atual" + estadoatual + "\n" + "estados finais:" + estadosfinais[j]);
+                            if (f.getProxEst().equals(estadosfinais[j])) {
+
+                                txtFitaSaida.setText(fita_saida);
+                                finalizamaquina = true;
+                                break;
+
+                            } else {
+                                estadoatual = f.getProxEst();
+                            }
+
                         }
-                        
-//                        if(estadoatual.equals(estados[(estados.length)-1])){
-//                             resultado="";
-//                             break;
-//                        }
-                        
-                        }
-                        
-                        if("R".equals(f.getMovFita())){ //se fita for pra direita
-                           k++;
-                           //charatual = string_fita_entrada.charAt(k);
-                        } else if("L".equals(f.getMovFita())){ //se fita for pra esquerda
-                           k--;
-                           //charatual = string_fita_entrada.charAt(k);
+
+                        if ("R".equals(f.getMovFita())) { //se fita for pra direita
+                            k++;
+                            //charatual = string_fita_entrada.charAt(k);
+                        } else if ("L".equals(f.getMovFita())) { //se fita for pra esquerda
+                            k--;
+                            //charatual = string_fita_entrada.charAt(k);
                         }// else if("S".equals(f.getMovFita())){ 
-                           //charatual = string_fita_entrada.charAt(k);
+                        //charatual = string_fita_entrada.charAt(k);
                         //}
                         charatual = string_fita_entrada.charAt(k);
                     }
-//                    for(int j=0;j<estadosfinais.length;j++){
-//                        
-//                        JOptionPane.showMessageDialog(null, "estado atual" + estadoatual+"\n"+ "estados finais:" + estadosfinais[j]);
-//                        if(estadoatual.equals(estadosfinais[j])){
-//                            
-//                            txtFitaSaida.setText(fita_saida);
-//                            finalizamaquina = true;
-//                            //break;            
-//                            
-//                        }else{
-//                            estadoatual=f.getProxEst();
-//                        }
-//                        
-////                        if(estadoatual.equals(estados[(estados.length)-1])){
-////                             resultado="";
-////                             break;
-////                        }
-//                        
-//                        }
-//                            if (resultado.equals("")){
-//                                
-//                            resultado="Inválida";
-//                            }
-//                            else{
-//                                txtFitaSaida.setText(fita_saida);
-//                        }
-                     
-                     
-                     
-                     //finalizamaquina = true; 
                 }
             }
         }
-        
-//        else{
-//                       fita_saida = fita_saida + f.getEscSimb();
-//                       txtFitaSaida.setText(fita_saida);
-//                   }
-        
-        //String text = String.valueOf(fita_entrada);
-
-        //txtFitaSaida.setText(text);
-        
-//        String estado_atual = estados[0];
-//        for (Func f : funcs){
-//           if(estado_atual.equals(f.getEstAtual())){
-//               //txtFitaSaida.setText("UHUL");
-//               for (int k = 0; k <= alfabeto_fita.length; k++) {
-//                        if(alfabeto_fita[k].equals(f.getLeSimb())){
-//                            estado_atual = f.getProxEst();
-//                        }
-//                    }
-//           } 
-//        }
-        
-        
-//        for (int j = 0; j <= estados.length; j++) {
-//            
-//            for (Func f : funcs) {
-//                if (estados[j].equals(f.getEstAtual())) {
-//                    //txtFitaSaida.setText("UHUL");
-//                    for (int k = 0; k <= alfabeto_fita.length; k++) {
-//                        if(alfabeto_fita[k].equals(f.getLeSimb())){
-//                            estado_atual = f.getProxEst();
-//                        }
-//                    }
-//                }
-//            }
-//        }
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtEscSimbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEscSimbActionPerformed
@@ -618,8 +550,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_txtMostraEstadoInActionPerformed
 
     public static void main(String args[]) {
-        
-        
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -639,7 +570,6 @@ public class Main extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
 
-        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Main().setVisible(true);
