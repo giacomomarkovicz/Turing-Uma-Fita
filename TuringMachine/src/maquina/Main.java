@@ -486,7 +486,7 @@ public class Main extends javax.swing.JFrame {
         while (finalizamaquina == false) {
             for (Func f : funcs) {
 
-                JOptionPane.showMessageDialog(null, "estado atual" + estadoatual + "\n" + "estados f.getestAtual:" + f.getEstAtual());
+                JOptionPane.showMessageDialog(null, "estado atual " + estadoatual + "\n" + " estados f.getestAtual: " + f.getEstAtual());
 
                 if (estadoatual.equals(f.getEstAtual())) { //compara estados
 
@@ -501,14 +501,21 @@ public class Main extends javax.swing.JFrame {
 //                        }                  
 //                    }
 
-                    JOptionPane.showMessageDialog(null, "char atual" + String.valueOf(charatual) + "\n" + "estados f.getlesymbol:" + f.getLeSimb());
+                    JOptionPane.showMessageDialog(null, "char atual " + String.valueOf(charatual) + "\n" + " estados f.getlesymbol: " + f.getLeSimb());
 
                     if (String.valueOf(charatual).equals(f.getLeSimb())) { //compara caracter atual da fita com os caracteres das funções de transição
-                        fita_saida = fita_saida + f.getEscSimb();
+                        //fita_saida = fita_saida + f.getEscSimb();
 
+                        char c = f.getEscSimb().charAt(0);
+                        
+                        JOptionPane.showMessageDialog(null, c);
+                        
+                        fita_saida = string_fita_entrada.replace(charatual, c);
+                        
+                        
                         for (int j = 0; j < estadosfinais.length; j++) {
 
-                            JOptionPane.showMessageDialog(null, "estado atual" + estadoatual + "\n" + "estados finais:" + estadosfinais[j]);
+                            JOptionPane.showMessageDialog(null, "estado atual " + estadoatual + "\n" + " estados finais:" + estadosfinais[j]);
                             if (f.getProxEst().equals(estadosfinais[j])) {
 
                                 txtFitaSaida.setText(fita_saida);
