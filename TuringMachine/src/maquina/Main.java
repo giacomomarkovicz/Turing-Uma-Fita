@@ -26,7 +26,7 @@ public class Main extends javax.swing.JFrame {
     String[] alfabeto_fita;
 
     String fita_saida = "";
-    char[] fita_entrada = null;
+    String[] fita_entrada = null;
     String string_fita_entrada;
 
     ArrayList<Func> funcs = new ArrayList();
@@ -475,8 +475,11 @@ public class Main extends javax.swing.JFrame {
         String estadoatual;
         int k = 0;
         Boolean finalizamaquina = false;
+          
 
         string_fita_entrada = txtFitaEntrada.getText();
+        
+        fita_entrada = string_fita_entrada.split("");
 
         //fita_entrada = string_fita_entrada.toCharArray();
         char charatual = string_fita_entrada.charAt(k);
@@ -501,24 +504,29 @@ public class Main extends javax.swing.JFrame {
 //                        }                  
 //                    }
 
-                    JOptionPane.showMessageDialog(null, "char atual " + String.valueOf(charatual) + "\n" + " estados f.getlesymbol: " + f.getLeSimb());
+                   // JOptionPane.showMessageDialog(null, "char atual " + String.valueOf(charatual) + "\n" + " estados f.getlesymbol: " + f.getLeSimb() + " escreve simb: " + f.getEscSimb());
 
-                    if (String.valueOf(charatual).equals(f.getLeSimb())) { //compara caracter atual da fita com os caracteres das funções de transição
-                        //fita_saida = fita_saida + f.getEscSimb();
+                    if (fita_entrada[k].equals(f.getLeSimb())) { //compara caracter atual da fita com os caracteres das funções de transição
+                        
+                        //fita_saida = fita_saida + f.getEscSimb(); CERTOOOO
 
                         char c = f.getEscSimb().charAt(0);
                         
-                        JOptionPane.showMessageDialog(null, c);
+                        JOptionPane.showMessageDialog(null, "char atual " + String.valueOf(charatual) + "\n" + " estados f.getlesymbol: " + f.getLeSimb() + " escreve simb: " + c);
                         
-                        fita_saida = string_fita_entrada.replace(charatual, c);
+                        //JOptionPane.showMessageDialog(null, c);
                         
+                        //fita_saida = string_fita_entrada.replace(charatual, c);
+                        
+                        fita_entrada[k] = fita_entrada[k].replace(charatual, c);
                         
                         for (int j = 0; j < estadosfinais.length; j++) {
 
                             JOptionPane.showMessageDialog(null, "estado atual " + estadoatual + "\n" + " estados finais:" + estadosfinais[j]);
                             if (f.getProxEst().equals(estadosfinais[j])) {
-
-                                txtFitaSaida.setText(fita_saida);
+                                
+                                String saida = Arrays.toString(fita_entrada);
+                                txtFitaSaida.setText(saida);
                                 finalizamaquina = true;
                                 break;
 
@@ -529,14 +537,12 @@ public class Main extends javax.swing.JFrame {
                         }
 
                         if ("R".equals(f.getMovFita())) { //se fita for pra direita
-                            k++;
-                            //charatual = string_fita_entrada.charAt(k);
+                            k++;                            
                         } else if ("L".equals(f.getMovFita())) { //se fita for pra esquerda
-                            k--;
-                            //charatual = string_fita_entrada.charAt(k);
-                        }// else if("S".equals(f.getMovFita())){ 
-                        //charatual = string_fita_entrada.charAt(k);
-                        //}
+                            k--;                           
+                        } else if("S".equals(f.getMovFita())){ 
+                            k = k+0;
+                        }
                         charatual = string_fita_entrada.charAt(k);
                     }
                 }
